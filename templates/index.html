@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+  <title>OpenAI Quickstart</title>
+  <link
+    rel="shortcut icon"
+    href="{{ url_for('static', filename='file.png') }}"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+</head>
+
+<body>
+  <img src="{{ url_for('static', filename='file.png') }}" class="icon" />
+  <h3>ChatGPT File Reader</h3>
+  <form action="/" method="post" enctype="multipart/form-data">
+    <input type="text" name="files" placeholder="Type Prompt" />
+    <input type="file" name="file" id="file-input" multiple class="custom-file-input" />
+    <label for="file-input" style="display: inline-block;">Choose Files</label>
+    <input type="file" name="folder" id="folder-input" class="custom-file-input" webkitdirectory mozdirectory />
+    <label for="folder-input" style="display: inline-block;">Choose Folders</label>
+    <input type="submit" value="Upload File/Folder" />
+  </form>
+  {% if result %}
+  <pre class="result">{{ result }}</pre>
+  {% endif %}
+</body>
